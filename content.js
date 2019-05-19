@@ -114,6 +114,16 @@ async function fetchCreationMethod() {
   if (creationMethodEntry) {
     creationMethodEntry.textContent = found.creationMethod;
   }
+
+  let phlayVersion;
+  if (found.properties && found.properties["phlay:version"]) {
+    phlayVersion = found.properties["phlay:version"];
+
+    console.log(`phlayVersion: ${phlayVersion}`);
+    if (creationMethodEntry) {
+      creationMethodEntry.textContent += ` (v${phlayVersion})`;
+    }
+  }
 }
 
 (async function() {
