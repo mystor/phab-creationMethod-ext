@@ -126,6 +126,30 @@ async function fetchCreationMethod() {
       creationMethodEntry.textContent += ` (v${phlayVersion})`;
     }
   }
+
+  let historyRows = Array.from(
+    document.querySelectorAll('form .aphront-table-view > tbody > tr')
+  );
+
+  let headerRow = historyRows.shift();
+  let header = document.createElement('th');
+  header.textContent = 'Creation Method';
+  let dateCell = headerRow.querySelector('.date');
+  dateCell.before(header);
+
+  let baseRow = historyRows.shift();
+  let baseCell = document.createElement('td');
+  let baseDate = baseRow.querySelector('.date');
+  baseDate.before(baseCell);
+
+  for (let row of historyRows) {
+    let id = row.querySelector(`a[href^="/D${revid}?id="]`).textContent;
+    let cell = document.createElement('td');
+    let info = diffinfo.result[id];
+    cell.textContent = info.creationMethod;
+    let dateCell = row.querySelector('.date');
+    dateCell.before(cell);
+  }
 }
 
 (async function() {
