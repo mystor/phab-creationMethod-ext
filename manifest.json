@@ -5,7 +5,10 @@
   "version": "0.1.1",
   "content_scripts": [
     {
-      "matches": ["https://phabricator.services.mozilla.com/*"],
+      "matches": [
+        "https://phabricator.services.mozilla.com/*",
+        "https://phabricator-dev.allizom.org/*"
+      ],
       "js": ["content.js"]
     }
   ]
