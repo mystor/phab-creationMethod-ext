@@ -107,7 +107,9 @@ async function fetchCreationMethod() {
   let ids = Object.keys(diffinfo.result).map(key => parseInt(key));
   ids.sort((a, b) => a - b);
   ids.reverse();
-  let found = diffinfo.result[ids[0]];
+  let params = new URLSearchParams(window.location.search);
+  let currentId = params.get('id') || ids[0];
+  let found = diffinfo.result[currentId];
 
   // Show the actual found creation method.
   console.log(`creationMethod: ${found.creationMethod}`);
