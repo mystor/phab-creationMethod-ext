@@ -1,4 +1,4 @@
-let site = "https://phabricator.services.mozilla.com";
+let site = window.location.origin;
 
 /// Create a node to inject creation method into.
 function addDiffEntry(name) {
