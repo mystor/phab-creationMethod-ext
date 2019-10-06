@@ -117,9 +117,8 @@ async function fetchCreationMethod() {
     creationMethodEntry.textContent = found.creationMethod;
   }
 
-  let phlayVersion;
   if (found.properties && found.properties["phlay:version"]) {
-    phlayVersion = found.properties["phlay:version"];
+    let phlayVersion = found.properties["phlay:version"];
 
     console.log(`phlayVersion: ${phlayVersion}`);
     if (creationMethodEntry) {
@@ -147,6 +146,10 @@ async function fetchCreationMethod() {
     let cell = document.createElement('td');
     let info = diffinfo.result[id];
     cell.textContent = info.creationMethod;
+    if (info.properties && info.properties['phlay:version']) {
+      let phlayVersion = found.properties['phlay:version'];
+      cell.textContent += ` (v${phlayVersion})`;
+    }
     let dateCell = row.querySelector('.date');
     dateCell.before(cell);
   }
