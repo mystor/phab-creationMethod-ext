@@ -147,7 +147,7 @@ async function fetchCreationMethod() {
     let info = diffinfo.result[id];
     cell.textContent = info.creationMethod;
     if (info.properties && info.properties['phlay:version']) {
-      let phlayVersion = found.properties['phlay:version'];
+      let phlayVersion = info.properties['phlay:version'];
       cell.textContent += ` (v${phlayVersion})`;
     }
     let dateCell = row.querySelector('.date');
